@@ -1,6 +1,7 @@
 {
   "name": "aggresive-alligator",
   "version": "0.1.0",
+  "homepage": "http://martadzielak.github.io/aggressive-alligator",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -20,7 +21,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +46,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.11",
+    "gh-pages": "^3.2.3",
     "styled-components": "^5.3.0"
   }
 }
