@@ -7,7 +7,7 @@ export const Header = () => {
         Aggre<span>ssive Alli</span>gator
       </PageTitle>
       <PageDescription>
-        This is a news aggregator that keeps a developer informed.
+        Where have you been, Web Developer? Read!
       </PageDescription>
     </HeaderContainer>
   );
