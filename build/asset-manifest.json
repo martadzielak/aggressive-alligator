@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/aggressive-alligator/static/css/main.53148caa.chunk.css",
-    "main.js": "/aggressive-alligator/static/js/main.f78e8481.chunk.js",
-    "main.js.map": "/aggressive-alligator/static/js/main.f78e8481.chunk.js.map",
+    "main.css": "/aggressive-alligator/static/css/main.f7c11fab.chunk.css",
+    "main.js": "/aggressive-alligator/static/js/main.28d51cca.chunk.js",
+    "main.js.map": "/aggressive-alligator/static/js/main.28d51cca.chunk.js.map",
     "runtime-main.js": "/aggressive-alligator/static/js/runtime-main.d2887b8a.js",
     "runtime-main.js.map": "/aggressive-alligator/static/js/runtime-main.d2887b8a.js.map",
     "static/css/2.ab75b8d7.chunk.css": "/aggressive-alligator/static/css/2.ab75b8d7.chunk.css",
@@ -10,14 +10,14 @@
     "static/js/2.bcfd75b3.chunk.js.map": "/aggressive-alligator/static/js/2.bcfd75b3.chunk.js.map",
     "index.html": "/aggressive-alligator/index.html",
     "static/css/2.ab75b8d7.chunk.css.map": "/aggressive-alligator/static/css/2.ab75b8d7.chunk.css.map",
-    "static/css/main.53148caa.chunk.css.map": "/aggressive-alligator/static/css/main.53148caa.chunk.css.map",
+    "static/css/main.f7c11fab.chunk.css.map": "/aggressive-alligator/static/css/main.f7c11fab.chunk.css.map",
     "static/js/2.bcfd75b3.chunk.js.LICENSE.txt": "/aggressive-alligator/static/js/2.bcfd75b3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d2887b8a.js",
     "static/css/2.ab75b8d7.chunk.css",
     "static/js/2.bcfd75b3.chunk.js",
-    "static/css/main.53148caa.chunk.css",
-    "static/js/main.f78e8481.chunk.js"
+    "static/css/main.f7c11fab.chunk.css",
+    "static/js/main.28d51cca.chunk.js"
   ]
 }
