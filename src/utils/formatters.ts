@@ -1,5 +1,5 @@
 export const removeCDATA = (string: string) => {
-  return string.replace(/<!\[CDATA\[.*?\]\]>/g, "");
+  return string.replace(/<!\[CDATA\[.*?\]\]>/g, "").replace(/\]\]>/g, "");
 };
 
 export const trimText = (string: string, number: number) => {
