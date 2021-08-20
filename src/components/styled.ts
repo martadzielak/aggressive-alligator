@@ -131,3 +131,7 @@ text-align: center;
 font-size: 20px;
 color: #eee;
 `;
+
+export const Alligator = styled.img`
+width: 350px;
+`

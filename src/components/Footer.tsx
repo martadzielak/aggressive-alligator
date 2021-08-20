@@ -1,10 +1,10 @@
-import { FooterContainer } from "./styled";
-import Alligator from './img/alligator-picture.png'
+import { Alligator, FooterContainer } from "./styled";
+import AlligatorPicture from './img/alligator.jpg'
 
 export const Footer = () => {
   return (
     <FooterContainer>
-      <img src={Alligator} alt="alligator"/>
+      <Alligator src={AlligatorPicture} alt="alligator"/>
       <p>
         If you're done... then you can go for a walk or do something different
         <strong> for once</strong>!
