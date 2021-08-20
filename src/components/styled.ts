@@ -40,7 +40,7 @@ export const PageDescription = styled.p`
 export const ContentContainer = styled.div`
   max-width: 1000px;
   width: 100%;
-  padding: 35px;
+  padding: 0 35px;
 
   & hr {
     background-color: #eee;
@@ -124,4 +124,10 @@ export const Excerpt = styled.p`
   & a:visited {
     color: #eee;
   }
+`;
+
+export const AsteriskDivider = styled.div`
+text-align: center;
+font-size: 20px;
+color: #eee;
 `;

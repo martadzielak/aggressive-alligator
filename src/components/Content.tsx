@@ -14,6 +14,7 @@ import {
 import { formatDate } from "../utils/dateHelpers";
 import { removeCDATA, trimText } from "../utils/formatters";
 import { IItem } from "../utils/types";
+import { Divider } from './Divider';
 
 export const Content = () => {
   const [items, setItems] = useState<IItem[]>([]);
@@ -41,7 +42,6 @@ export const Content = () => {
                   <TitleContainer>
                     <DateAndAuthor>
                       {item.pubDate ? `📅${formatDate(item.pubDate)} ` : null}
-                      {item.creator ? `- ${removeCDATA(item.creator)} ` : null}
                     </DateAndAuthor>
                     <Title>
                       {item.title ? `| ${removeCDATA(item.title)}` : null}
@@ -56,7 +56,7 @@ export const Content = () => {
                   }}
                 />
               </ContentItem>
-              {i !== 4 && <hr />}
+              {i !== 4 && <Divider/>}
             </>
           );
         })}

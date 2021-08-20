@@ -15,7 +15,6 @@ export const getFeedItemsArray = async () => {
       link: el.querySelector("link")?.innerHTML,
       title: el.querySelector("title")?.innerHTML,
       pubDate: parseDate(el.querySelector("pubDate")?.innerHTML),
-      creator: el.querySelector("creator")?.innerHTML,
       description: el.querySelector("description")?.innerHTML,
     }));
     feedItemsArray.push(feedItems);

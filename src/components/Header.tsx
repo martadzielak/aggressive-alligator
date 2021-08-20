@@ -7,7 +7,7 @@ export const Header = () => {
         Aggre<span>ssive Alli</span>gator
       </PageTitle>
       <PageDescription>
-        Where have you been, Web Developer? Read!
+        Where have you been, <strong>Web Developer</strong>? Read!
       </PageDescription>
     </HeaderContainer>
   );
