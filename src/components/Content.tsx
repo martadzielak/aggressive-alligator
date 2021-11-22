@@ -19,6 +19,7 @@ import { Divider } from "./Divider";
 export const Content = () => {
   const [items, setItems] = useState<IItem[]>([]);
   const [loading, setLoading] = useState(true);
+  console.log(process.env.NODE_ENV);
 
   useEffect(() => {
     getFeed();

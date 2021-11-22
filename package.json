@@ -2,7 +2,7 @@
   "name": "aggresive-alligator",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:4050",
+  "proxy": "https://aggressive-alligator.netlify.app/proxy/",
   "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
