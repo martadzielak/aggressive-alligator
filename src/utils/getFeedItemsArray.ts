@@ -4,10 +4,12 @@ import { parseDate, sortChronologically } from "./dateHelpers";
 export const getFeedItemsArray = async () => {
   const feedItemsArray = [];
   for (const feedUrl of feedUrls) {
-    const res = await fetch(`https://api.allorigins.win/get?url=${feedUrl}`);
-    const { contents } = await res.json();
+    const request = new XMLHttpRequest();
+    request.open("GET", feedUrl, false);
+    request.send();
+    const responseText = request.responseText;
     const contentsParsed = new window.DOMParser().parseFromString(
-      contents,
+      responseText,
       "text/xml"
     );
     const selectedFeeds = contentsParsed.querySelectorAll("item");

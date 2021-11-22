@@ -34,7 +34,7 @@ export const PageDescription = styled.p`
   padding-top: 15px;
   margin: 0;
   text-align: center;
-  color: #eee;
+  color: #b7b7b7;
 `;
 
 export const ContentContainer = styled.div`
@@ -43,7 +43,7 @@ export const ContentContainer = styled.div`
   padding: 0 35px;
 
   & hr {
-    background-color: #eee;
+    background-color: #b7b7b7;
   }
 
   @media (max-width: 1000px) {
@@ -56,7 +56,7 @@ export const Link = styled.a`
   text-decoration: none;
 
   &:visited {
-    color: #eee;
+    color: #b7b7b7;
   }
 `;
 
@@ -65,7 +65,7 @@ export const FooterContainer = styled.footer`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #eee;
+  color: #b7b7b7;
   padding: 35px;
 `;
 
@@ -79,7 +79,7 @@ export const LoaderContainer = styled.div`
 `;
 
 export const LoaderText = styled.p`
-  color: #eee;
+  color: #b7b7b7;
   font-size: 40px;
   text-align: center;
   @media (max-width: 1000px) {
@@ -104,7 +104,7 @@ export const ContentItem = styled.li`
 `;
 
 export const DateAndAuthor = styled.span`
-  color: #eee;
+  color: #b7b7b7;
 `;
 
 export const TitleContainer = styled.h2`
@@ -115,23 +115,29 @@ export const TitleContainer = styled.h2`
 export const Title = styled.span``;
 
 export const Excerpt = styled.p`
-  color: #eee;
+  color: #b7b7b7;
 
   & a {
     color: #05f4b7;
   }
 
   & a:visited {
-    color: #eee;
+    color: #b7b7b7;
   }
 `;
 
 export const AsteriskDivider = styled.div`
-text-align: center;
-font-size: 20px;
-color: #eee;
+  text-align: center;
+  font-size: 20px;
+  color: #b7b7b7;
 `;
 
 export const Alligator = styled.img`
-width: 350px;
-`
+  width: 75%;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.3;
+`;

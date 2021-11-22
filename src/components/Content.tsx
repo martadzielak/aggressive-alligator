@@ -14,18 +14,19 @@ import {
 import { formatDate } from "../utils/dateHelpers";
 import { removeCDATA, trimText } from "../utils/formatters";
 import { IItem } from "../utils/types";
-import { Divider } from './Divider';
+import { Divider } from "./Divider";
 
 export const Content = () => {
   const [items, setItems] = useState<IItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getRss();
+    getFeed();
   }, []);
 
-  const getRss = async () => {
-    setItems(await getFeedItemsArray());
+  const getFeed = async () => {
+    const feed = (await getFeedItemsArray()).slice(0, 5);
+    setItems(feed);
     setLoading(false);
   };
 
@@ -34,7 +35,7 @@ export const Content = () => {
   ) : (
     <ContentContainer>
       <ContentList>
-        {items.slice(0, 5).map((item, i) => {
+        {items.map((item, i) => {
           return (
             <>
               <ContentItem key={item.title}>
@@ -56,7 +57,7 @@ export const Content = () => {
                   }}
                 />
               </ContentItem>
-              {i !== 4 && <Divider/>}
+              {i !== 4 && <Divider />}
             </>
           );
         })}
