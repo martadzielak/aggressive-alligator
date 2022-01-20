@@ -5,6 +5,7 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
 `;
 
 export const HeaderContainer = styled.header`
@@ -16,13 +17,15 @@ export const HeaderContainer = styled.header`
 `;
 
 export const PageTitle = styled.h1`
+  display: flex;
+  align-items: center;
   font-size: 70px;
   margin: 0;
   text-align: center;
-  color: #05f4b7;
+  color: #74c8ba;
 
   & span {
-    color: #371bb1;
+    color: #abd69a;
   }
 
   @media (max-width: 1000px) {
@@ -30,11 +33,18 @@ export const PageTitle = styled.h1`
   }
 `;
 
+export const Alligator = styled.img`
+  height: 70px;
+
+  @media (max-width: 1000px) {
+    height: 50px;
+  }
+`;
+
 export const PageDescription = styled.p`
   padding-top: 15px;
   margin: 0;
   text-align: center;
-  color: #b7b7b7;
 `;
 
 export const ContentContainer = styled.div`
@@ -43,7 +53,7 @@ export const ContentContainer = styled.div`
   padding: 0 35px;
 
   & hr {
-    background-color: #b7b7b7;
+    background-color: #14133f;
   }
 
   @media (max-width: 1000px) {
@@ -52,11 +62,11 @@ export const ContentContainer = styled.div`
 `;
 
 export const Link = styled.a`
-  color: #05f4b7;
+  color: #371bb1;
   text-decoration: none;
 
   &:visited {
-    color: #b7b7b7;
+    color: #222;
   }
 `;
 
@@ -65,8 +75,16 @@ export const FooterContainer = styled.footer`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #b7b7b7;
+  color: #14133f;
   padding: 35px;
+
+  & a {
+    color: #74c8ba;
+  }
+
+  & a:visited {
+    color: #abd69a;
+  }
 `;
 
 export const LoaderContainer = styled.div`
@@ -79,7 +97,7 @@ export const LoaderContainer = styled.div`
 `;
 
 export const LoaderText = styled.p`
-  color: #b7b7b7;
+  color: #371bb1;
   font-size: 40px;
   text-align: center;
   @media (max-width: 1000px) {
@@ -104,7 +122,7 @@ export const ContentItem = styled.li`
 `;
 
 export const DateAndAuthor = styled.span`
-  color: #b7b7b7;
+  color: #14133f;
 `;
 
 export const TitleContainer = styled.h2`
@@ -115,29 +133,19 @@ export const TitleContainer = styled.h2`
 export const Title = styled.span``;
 
 export const Excerpt = styled.p`
-  color: #b7b7b7;
+  color: #14133f;
 
   & a {
-    color: #05f4b7;
+    color: #74c8ba;
   }
 
   & a:visited {
-    color: #b7b7b7;
+    color: #abd69a;
   }
 `;
 
 export const AsteriskDivider = styled.div`
   text-align: center;
   font-size: 20px;
-  color: #b7b7b7;
-`;
-
-export const Alligator = styled.img`
-  width: 75%;
-  position: fixed;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  opacity: 0.3;
+  color: #14133f;
 `;

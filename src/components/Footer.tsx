@@ -1,13 +1,15 @@
-import { Alligator, FooterContainer } from "./styled";
-import AlligatorPicture from './img/alligator.jpg'
+import { FooterContainer } from "./styled";
 
 export const Footer = () => {
   return (
     <FooterContainer>
-      <Alligator src={AlligatorPicture} alt="alligator"/>
       <p>
-        If you're done... then you can go for a walk or do something different
+        If you're done... you can go for a walk or do something different
         <strong> for once</strong>!
+      </p>
+      <p>
+        This page is created and maintained by Marta Dziełak (
+        <a href="https://github.com/martadzielak">Github</a>)
       </p>
     </FooterContainer>
   );

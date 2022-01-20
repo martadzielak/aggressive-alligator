@@ -5,7 +5,7 @@ import { LoaderContainer, LoaderText } from "./styled";
 export const LoaderWithText = () => {
   return (
     <LoaderContainer>
-      <Loader type="Rings" color="#05f4b7" height={150} width={150} />
+      <Loader type="Rings" color="#abd69a" height={150} width={150} />
       <LoaderText>Wait for your feed to load...</LoaderText>
     </LoaderContainer>
   );

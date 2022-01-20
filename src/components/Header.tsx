@@ -1,13 +1,20 @@
-import { HeaderContainer, PageDescription, PageTitle } from "./styled";
+import {
+  Alligator,
+  HeaderContainer,
+  PageDescription,
+  PageTitle,
+} from "./styled";
+import AlligatorPicture from "./img/alligator.svg";
 
 export const Header = () => {
   return (
     <HeaderContainer>
       <PageTitle>
-        Aggre<span>ssive Alli</span>gator
+        Aggre<span>ssive Alli</span>gator{" "}
+        <Alligator src={AlligatorPicture} alt="alligator" />
       </PageTitle>
       <PageDescription>
-        Where have you been, <strong>Web Developer</strong>? Read!
+        Where have you been, <strong>lazy dog</strong>? Read!
       </PageDescription>
     </HeaderContainer>
   );
