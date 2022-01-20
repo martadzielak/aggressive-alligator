@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import alligatorPicture from "./img/alligator.svg";
 
 export const Main = styled.div`
   display: flex;
@@ -143,10 +142,7 @@ export const Excerpt = styled.p`
   }
 `;
 
-export const AlligatorDivider = styled.div`
-  background: url(${alligatorPicture});
-  background-size: contain;
-  background-repeat: repeat;
-  height: 30px;
-  width: 100%;
+export const ContentDivider = styled.div`
+  margin: 0 auto;
+  text-align: center;
 `;

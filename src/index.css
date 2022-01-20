@@ -13,3 +13,8 @@ body {
 code {
   font-family: "JetBrains Mono", monospace;
 }
+
+hr {
+  border-top: 1px solid #14133f;
+  width: 100%;
+}

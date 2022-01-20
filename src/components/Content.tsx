@@ -38,6 +38,7 @@ export const Content = () => {
         {items.map((item, i) => {
           return (
             <>
+              {i !== 5 && <Divider number={i + 1} />}
               <ContentItem key={item.title}>
                 <Link href={item.link}>
                   <TitleContainer>
@@ -57,7 +58,6 @@ export const Content = () => {
                   }}
                 />
               </ContentItem>
-              {i !== 4 && <Divider />}
             </>
           );
         })}
