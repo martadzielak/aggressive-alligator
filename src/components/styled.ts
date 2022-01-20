@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import alligatorPicture from "./img/alligator.svg";
 
 export const Main = styled.div`
   display: flex;
@@ -17,8 +18,6 @@ export const HeaderContainer = styled.header`
 `;
 
 export const PageTitle = styled.h1`
-  display: flex;
-  align-items: center;
   font-size: 70px;
   margin: 0;
   text-align: center;
@@ -50,7 +49,7 @@ export const PageDescription = styled.p`
 export const ContentContainer = styled.div`
   max-width: 1000px;
   width: 100%;
-  padding: 0 35px;
+  margin: 0 auto;
 
   & hr {
     background-color: #14133f;
@@ -144,8 +143,10 @@ export const Excerpt = styled.p`
   }
 `;
 
-export const AsteriskDivider = styled.div`
-  text-align: center;
-  font-size: 20px;
-  color: #14133f;
+export const AlligatorDivider = styled.div`
+  background: url(${alligatorPicture});
+  background-size: contain;
+  background-repeat: repeat;
+  height: 30px;
+  width: 100%;
 `;

@@ -1,7 +1,5 @@
-import { AsteriskDivider } from './styled'
+import { AlligatorDivider } from "./styled";
 
-export const Divider = ()=> {
-    return(
-        <AsteriskDivider>***</AsteriskDivider>
-    )
-}
+export const Divider = () => {
+  return <AlligatorDivider />;
+};
