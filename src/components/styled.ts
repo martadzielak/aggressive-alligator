@@ -62,11 +62,11 @@ export const ContentContainer = styled.div`
 `;
 
 export const Link = styled.a`
-  color: #371bb1;
+  color: #74c8ba;
   text-decoration: none;
 
   &:visited {
-    color: #222;
+    color: #abd69a;
   }
 `;
 
