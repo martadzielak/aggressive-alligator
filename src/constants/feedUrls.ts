@@ -1,10 +1,4 @@
-const hostname = window.location.hostname;
-const port = 4050;
-
-const baseUrl =
-  process.env.NODE_ENV === "development"
-    ? `http://${hostname}:${port}/feed/`
-    : "/proxy/";
+const baseUrl = `/.netlify/functions/server/`;
 
 export const feedUrls = [
   `${baseUrl}kentcdodds`,
