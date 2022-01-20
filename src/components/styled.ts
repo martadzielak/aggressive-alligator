@@ -73,8 +73,10 @@ export const FooterContainer = styled.footer`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
   color: #14133f;
   padding: 35px;
+  max-width: 800px;
 
   & a {
     color: #74c8ba;
@@ -82,6 +84,10 @@ export const FooterContainer = styled.footer`
 
   & a:visited {
     color: #abd69a;
+  }
+
+  @media (max-width: 800px) {
+    padding: 15px;
   }
 `;
 
