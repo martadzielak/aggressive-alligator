@@ -4,8 +4,12 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 12px;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  color: white;
 `;
 
 export const HeaderContainer = styled.header`
@@ -51,7 +55,7 @@ export const ContentContainer = styled.div`
   margin: 0 auto;
 
   & hr {
-    background-color: #14133f;
+    background-color: white;
   }
 
   @media (max-width: 1000px) {
@@ -74,7 +78,6 @@ export const FooterContainer = styled.footer`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  color: #14133f;
   padding: 35px;
   max-width: 800px;
 
@@ -125,9 +128,7 @@ export const ContentItem = styled.li`
   }
 `;
 
-export const DateAndAuthor = styled.span`
-  color: #14133f;
-`;
+export const DateAndAuthor = styled.span``;
 
 export const TitleContainer = styled.h2`
   padding: 0;
@@ -137,8 +138,6 @@ export const TitleContainer = styled.h2`
 export const Title = styled.span``;
 
 export const Excerpt = styled.p`
-  color: #14133f;
-
   & a {
     color: #74c8ba;
   }

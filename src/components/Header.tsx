@@ -4,7 +4,7 @@ import {
   PageDescription,
   PageTitle,
 } from "./styled";
-import AlligatorPicture from "./img/alligator.svg";
+import AlligatorPicture from "./assets/alligator.svg";
 
 export const Header = () => {
   return (

@@ -3,8 +3,6 @@
 
 body {
   margin: 0;
-  background-color: #fcf9dd;
-  color: #14133f;
   font-family: "Sora", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,6 +13,5 @@ code {
 }
 
 hr {
-  border-top: 1px solid #14133f;
   width: 100%;
 }

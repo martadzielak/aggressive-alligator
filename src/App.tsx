@@ -1,3 +1,4 @@
+import { Background } from "./components/Background";
 import { Content } from "./components/Content";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -10,6 +11,7 @@ export default function App() {
       <Content />
       <hr />
       <Footer />
+      <Background />
     </Main>
   );
 }
