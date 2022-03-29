@@ -51,7 +51,6 @@ export const PageDescription = styled.p`
 
 export const ContentContainer = styled.div`
   max-width: 1000px;
-  width: 100%;
   margin: 0 auto;
 
   & hr {
@@ -104,12 +103,8 @@ export const LoaderContainer = styled.div`
 `;
 
 export const LoaderText = styled.p`
-  color: #371bb1;
-  font-size: 40px;
+  color: white;
   text-align: center;
-  @media (max-width: 1000px) {
-    font-size: 20px;
-  }
 `;
 
 export const ContentList = styled.ul`

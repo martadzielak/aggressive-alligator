@@ -27,7 +27,7 @@ export const Content = () => {
   const getFeed = async () => {
     const feed = (await getFeedItemsArray()).slice(0, 5);
     setItems(feed);
-    setLoading(false);
+    if (feed.length > 0) setLoading(false);
   };
 
   return loading ? (

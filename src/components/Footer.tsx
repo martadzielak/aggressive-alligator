@@ -4,13 +4,10 @@ export const Footer = () => {
   return (
     <>
       <FooterContainer>
-        <p>
-          If you're done... you can go for a walk or do something different
-          <strong> for once</strong>!
-        </p>
+        <p>That's all...</p>
         <p>
           Aggressive Alligator is a project supporting my (and maybe yours)
-          daily technology news reading. For now, it displays 5 newest articles
+          daily technology news reading. For now, it displays newest articles
           from the following blogs:{" "}
           <a href="https://medium.com/feed/@kentcdodds">
             Medium: Kent C. Dodds

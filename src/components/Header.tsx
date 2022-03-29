@@ -13,9 +13,7 @@ export const Header = () => {
         Aggre<span>ssive Alli</span>gator{" "}
         <Alligator src={AlligatorPicture} alt="alligator" />
       </PageTitle>
-      <PageDescription>
-        Where have you been, <strong>lazy dog</strong>? Read!
-      </PageDescription>
+      <PageDescription>Hellew, aaarrrgghhh</PageDescription>
     </HeaderContainer>
   );
 };

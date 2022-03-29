@@ -9,7 +9,6 @@ export default function App() {
     <Main>
       <Header />
       <Content />
-      <hr />
       <Footer />
       <Background />
     </Main>
