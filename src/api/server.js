@@ -14,7 +14,9 @@ const getRss = (endpoint, url) => {
   router.get(endpoint, (req, res) => {
     request({ url: url }, (error, response, body) => {
       if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: "error", message: "heee" });
+        return res
+          .status(500)
+          .json({ type: "error", message: "Internal server error" });
       }
 
       res.set("Content-Type", "application/rss+xml");
@@ -33,7 +35,7 @@ getRss("/stackabuse", "https://stackabuse.com/rss");
 getRss("/alistapart", "https://alistapart.com/main/feed/");
 getRss("/akendi", "https://www.akendi.com/blog/feed/");
 
-// path must route to lambda
-app.use("/.netlify/functions/server", router);
+app.use("/.netlify/functions/server", router); // path must route to lambda
+
 module.exports = app;
 module.exports.handler = serverless(app);
