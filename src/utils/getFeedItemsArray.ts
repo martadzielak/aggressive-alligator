@@ -1,9 +1,9 @@
-import { feedUrls } from "../constants/feedUrls";
+import { FEED_URLS } from "../constants";
 import { parseDate, sortChronologically } from "./dateHelpers";
 
 export const getFeedItemsArray = async () => {
   const feedItemsArray = [];
-  for (const feedUrl of feedUrls) {
+  for (const feedUrl of FEED_URLS) {
     const contentsParsed = await fetch(feedUrl)
       .then((response) => response.text())
       .then((str) => new window.DOMParser().parseFromString(str, "text/xml"));
@@ -19,6 +19,5 @@ export const getFeedItemsArray = async () => {
   }
   const feed = feedItemsArray.flat();
   const feedSorted = sortChronologically(feed);
-
   return feedSorted;
 };

@@ -1,6 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { colorBlack, colorWhite, mobileMaxWidth } from "../constants";
+
+const textShadow = css`
+  text-shadow: 0 0 10px ${colorBlack + "aa"};
+`;
+
+const dropShadow = css`
+  filter: drop-shadow(0px 0px 10px ${colorBlack + "aa"});
+`;
 
 export const Main = styled.div`
+  ${textShadow};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +19,7 @@ export const Main = styled.div`
   min-height: 100vh;
   max-width: 100vw;
   overflow: hidden;
-  color: white;
+  color: ${colorWhite};
 `;
 
 export const HeaderContainer = styled.header`
@@ -24,21 +34,22 @@ export const PageTitle = styled.h1`
   font-size: 70px;
   margin: 0;
   text-align: center;
-  color: #74c8ba;
+  color: ${colorWhite};
 
   & span {
-    color: #abd69a;
+    color: ${colorBlack};
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: ${mobileMaxWidth}) {
     font-size: 50px;
   }
 `;
 
 export const Alligator = styled.img`
+  ${dropShadow};
   height: 70px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: ${mobileMaxWidth}) {
     height: 50px;
   }
 `;
@@ -50,25 +61,21 @@ export const PageDescription = styled.p`
 `;
 
 export const ContentContainer = styled.div`
-  max-width: 1000px;
+  max-width: ${mobileMaxWidth};
   margin: 0 auto;
 
   & hr {
-    background-color: white;
+    background-color: ${colorWhite};
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: ${mobileMaxWidth}) {
     padding: 15px;
   }
 `;
 
 export const Link = styled.a`
-  color: #74c8ba;
   text-decoration: none;
-
-  &:visited {
-    color: #abd69a;
-  }
+  font-weight: bold;
 `;
 
 export const FooterContainer = styled.footer`
@@ -81,11 +88,9 @@ export const FooterContainer = styled.footer`
   max-width: 800px;
 
   & a {
-    color: #74c8ba;
-  }
-
-  & a:visited {
-    color: #abd69a;
+    text-decoration: none;
+    font-weight: bold;
+    color: ${colorWhite};
   }
 
   @media (max-width: 800px) {
@@ -94,8 +99,9 @@ export const FooterContainer = styled.footer`
 `;
 
 export const LoaderContainer = styled.div`
+  ${dropShadow};
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: ${mobileMaxWidth};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,7 +109,7 @@ export const LoaderContainer = styled.div`
 `;
 
 export const LoaderText = styled.p`
-  color: white;
+  color: ${colorWhite};
   text-align: center;
 `;
 
@@ -118,7 +124,7 @@ export const ContentItem = styled.li`
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width: 1000px) {
+  @media (max-width: ${mobileMaxWidth}) {
     padding: 15px;
   }
 `;
@@ -128,17 +134,18 @@ export const DateAndAuthor = styled.span``;
 export const TitleContainer = styled.h2`
   padding: 0;
   margin: 0;
+  color: ${colorWhite};
 `;
 
-export const Title = styled.span``;
+export const ContentTitle = styled.h2`
+  margin: 0;
+`;
 
 export const Excerpt = styled.p`
   & a {
-    color: #74c8ba;
-  }
-
-  & a:visited {
-    color: #abd69a;
+    color: ${colorWhite};
+    text-decoration: none;
+    font-weight: bold;
   }
 `;
 

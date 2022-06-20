@@ -8,13 +8,12 @@ import {
   DateAndAuthor,
   Excerpt,
   Link,
-  Title,
+  ContentTitle,
   TitleContainer,
 } from "./styled";
 import { formatDate } from "../utils/dateHelpers";
 import { removeCDATA, trimText } from "../utils/formatters";
 import { IItem } from "../utils/types";
-import { Divider } from "./Divider";
 
 export const Content = () => {
   const [items, setItems] = useState<IItem[]>([]);
@@ -38,16 +37,15 @@ export const Content = () => {
         {items.map((item, i) => {
           return (
             <>
-              {i !== 5 && <Divider number={i + 1} />}
               <ContentItem key={item.title}>
                 <Link href={item.link}>
                   <TitleContainer>
                     <DateAndAuthor>
                       {item.pubDate ? `📅${formatDate(item.pubDate)} ` : null}
                     </DateAndAuthor>
-                    <Title>
+                    <ContentTitle>
                       {item.title ? `| ${removeCDATA(item.title)}` : null}
-                    </Title>
+                    </ContentTitle>
                   </TitleContainer>
                 </Link>
                 <Excerpt
