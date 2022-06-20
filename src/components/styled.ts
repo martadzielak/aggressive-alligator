@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
-import { colorBlack, colorWhite, mobileMaxWidth } from "../constants";
+import {
+  basicFontSize,
+  colorBlack,
+  colorWhite,
+  mobileMaxWidth,
+} from "../constants";
 
 const textShadow = css`
   text-shadow: 0 0 10px ${colorBlack + "aa"};
@@ -15,7 +20,7 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  font-size: 12px;
+  font-size: ${basicFontSize};
   min-height: 100vh;
   max-width: 100vw;
   overflow: hidden;

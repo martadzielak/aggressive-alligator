@@ -16,4 +16,6 @@ export const colorWhite = "#ffffff";
 export const colorPink = "hotpink";
 export const colorViolet = "#42446F";
 
+export const basicFontSize = "14px";
+
 export const mobileMaxWidth = "850px";
