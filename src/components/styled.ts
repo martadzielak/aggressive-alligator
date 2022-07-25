@@ -136,7 +136,7 @@ export const ContentItem = styled.li`
 
 export const DateAndAuthor = styled.span``;
 
-export const TitleContainer = styled.h2`
+export const TitleContainer = styled.span`
   padding: 0;
   margin: 0;
   color: ${colorWhite};

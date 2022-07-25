@@ -1,15 +1,7 @@
-export const BASE_API_URL = `/.netlify/functions/server/`;
-
-export const FEED_URLS = [
-  `${BASE_API_URL}kentcdodds`,
-  `${BASE_API_URL}freecodecamp`,
-  `${BASE_API_URL}hackernoon`,
-  `${BASE_API_URL}sekurak`,
-  `${BASE_API_URL}csstricks`,
-  `${BASE_API_URL}stackabuse`,
-  `${BASE_API_URL}alistapart`,
-  `${BASE_API_URL}akendi`,
-];
+const devEnv = process.env.NODE_ENV === "development";
+export const BASE_API_URL = `${
+  devEnv ? "http://localhost:9000" : "https://aggressive-alligator.netlify.app"
+}/.netlify/functions/server/`;
 
 export const colorBlack = "#000000";
 export const colorWhite = "#ffffff";

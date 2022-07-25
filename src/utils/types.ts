@@ -1,6 +1,6 @@
 export interface IItem {
-  link: string | undefined;
   title: string | undefined;
+  link: string | undefined;
   pubDate: number | undefined;
-  description: string | undefined;
+  content: string | undefined;
 }
