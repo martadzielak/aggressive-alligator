@@ -14,6 +14,7 @@ import { formatDate } from "../utils/dateHelpers";
 import { removeCDATA, trimText } from "../utils/formatters";
 import { IItem } from "../utils/types";
 import { BASE_API_URL } from "../constants";
+import { forkJoin, fromEvent, map } from "rxjs";
 
 interface IApiResponse {
   page: number;
@@ -24,16 +25,21 @@ interface IApiResponse {
 export const Content = () => {
   const [items, setItems] = useState<IItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    updateFeed(pageNumber);
-    window.addEventListener("scroll", handleScroll);
-  }, [pageNumber]);
+    loadInitialFeed();
+  }, []);
 
-  const getFeed = async (page: number = 1) => {
-    const queryParam = page ? `p=${page}` : "";
-    const endpointUrl = new URL(`getAllFeed?${queryParam}`, BASE_API_URL);
+  const loadInitialFeed = async () => {
+    const newItems = await getFeed(1);
+    setItems(newItems);
+    if (newItems.length > 0) setLoading(false);
+  };
+
+  const getFeed = async (page: number) => {
+    const queryParam = `?p=${page}`;
+    const endpointUrl = new URL(`getAllFeed${queryParam}`, BASE_API_URL);
     console.log(endpointUrl.href);
     const response = await fetch(endpointUrl.href);
     if (!response.ok) {
@@ -43,21 +49,22 @@ export const Content = () => {
     return data.feed;
   };
 
-  const updateFeed = async (page: number = 1) => {
-    const feed = await getFeed(page);
-    const newItems = items.concat(feed);
-    setItems(newItems);
-    if (feed.length > 0) setLoading(false);
-  };
+  const scroll = fromEvent(document, "scroll").pipe(
+    map(() => {
+      return document.documentElement.scrollTop;
+    })
+  );
 
-  const handleScroll = () => {
-    let userScrollHeight = window.innerHeight + window.scrollY;
-    let windowBottomHeight = document.documentElement.offsetHeight;
-    if (userScrollHeight >= windowBottomHeight) {
-      updateFeed(pageNumber + 1);
-      setPageNumber(pageNumber + 1);
+  scroll.subscribe((scrollPos) => {
+    let limit = document.documentElement.scrollTop - window.innerHeight;
+    if (scrollPos === limit) {
+      setPage(page + 1);
+      forkJoin([items, getFeed(page)]).subscribe((data: any) => {
+        const newArr = [...data[0], ...data[1]];
+        setItems(newArr);
+      });
     }
-  };
+  });
 
   return loading ? (
     <LoaderWithText />
