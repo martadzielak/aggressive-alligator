@@ -20,23 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const parseDate = (dateString: string | undefined) => {
-  if (dateString) {
-    const date = new Date(dateString);
-    return date.getTime();
-  }
-};
-
-const sortChronologically = (itemsArray: IItem[]) => {
-  const sortedItemsArray = itemsArray.sort((a, b) => {
-    if (a.pubDate && b.pubDate) {
-      return a.pubDate > b.pubDate ? -1 : 1;
-    } else return 0;
-  });
-
-  return sortedItemsArray;
-};
-
 const parseXml = (xml: string) => {
   return new Promise((resolve) => {
     parseString(xml, (err, result) => {
@@ -60,6 +43,40 @@ const parseXml = (xml: string) => {
   });
 };
 
+const parseDate = (dateString: string | undefined) => {
+  if (dateString) {
+    const date = new Date(dateString);
+    return date.getTime();
+  }
+};
+
+const sortChronologically = (itemsArray: IItem[]) => {
+  const sortedItemsArray = itemsArray.sort((a, b) => {
+    if (a.pubDate && b.pubDate) {
+      return a.pubDate > b.pubDate ? -1 : 1;
+    } else return 0;
+  });
+
+  return sortedItemsArray;
+};
+
+const paginate = (feed: IItem[], req: express.Request) => {
+  if (feed.length === 0) return;
+  const pageCount = Math.ceil(feed.length / 10);
+  let page = parseInt(req.query.p as any);
+  if (!page) {
+    page = 1;
+  }
+  if (page > pageCount) {
+    page = pageCount;
+  }
+  return {
+    page,
+    pageCount,
+    feed: feed.slice(page * 10 - 10, page * 10),
+  };
+};
+
 router.get("/getAllFeed", async (req, res) => {
   let result = [];
   try {
@@ -73,8 +90,9 @@ router.get("/getAllFeed", async (req, res) => {
     }
     const flattenedArr = result.flat(2) as IItem[];
     const sortedFeed = sortChronologically(flattenedArr);
+    const paginatedResult = paginate(sortedFeed, req);
     res.set("Content-Type", "application/json");
-    res.send(sortedFeed);
+    res.send(paginatedResult);
   } catch (error) {
     console.error(error);
   }

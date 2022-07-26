@@ -15,29 +15,50 @@ import { removeCDATA, trimText } from "../utils/formatters";
 import { IItem } from "../utils/types";
 import { BASE_API_URL } from "../constants";
 
+interface IApiResponse {
+  page: number;
+  pageCount: number;
+  feed: IItem[];
+}
+
 export const Content = () => {
   const [items, setItems] = useState<IItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
-    const updateFeed = async () => {
-      const feed = await getFeed();
-      setItems(feed);
-      if (feed.length > 0) setLoading(false);
-    };
-    updateFeed();
-  }, []);
+    updateFeed(pageNumber);
+    window.addEventListener("scroll", handleScroll);
+  }, [pageNumber]);
 
-  const getFeed = async () => {
-    const endpointUrl = new URL("getAllFeed", BASE_API_URL);
+  const getFeed = async (page: number = 1) => {
+    const queryParam = page ? `p=${page}` : "";
+    const endpointUrl = new URL(`getAllFeed?${queryParam}`, BASE_API_URL);
     console.log(endpointUrl.href);
     const response = await fetch(endpointUrl.href);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const data = (await response.json()) as IItem[];
-    return data;
+    const data = (await response.json()) as IApiResponse;
+    return data.feed;
   };
+
+  const updateFeed = async (page: number = 1) => {
+    const feed = await getFeed(page);
+    const newItems = items.concat(feed);
+    setItems(newItems);
+    if (feed.length > 0) setLoading(false);
+  };
+
+  const handleScroll = () => {
+    let userScrollHeight = window.innerHeight + window.scrollY;
+    let windowBottomHeight = document.documentElement.offsetHeight;
+    if (userScrollHeight >= windowBottomHeight) {
+      updateFeed(pageNumber + 1);
+      setPageNumber(pageNumber + 1);
+    }
+  };
+
   return loading ? (
     <LoaderWithText />
   ) : (
