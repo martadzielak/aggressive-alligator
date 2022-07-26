@@ -66,6 +66,7 @@ export const PageDescription = styled.p`
 `;
 
 export const ContentContainer = styled.div`
+  box-sizing: border-box;
   max-width: ${mobileMaxWidth};
   margin: 0 auto;
 
@@ -74,6 +75,7 @@ export const ContentContainer = styled.div`
   }
 
   @media (max-width: ${mobileMaxWidth}) {
+    max-width: 100%;
     padding: 15px;
   }
 `;
@@ -130,7 +132,7 @@ export const ContentItem = styled.li`
   align-items: flex-start;
 
   @media (max-width: ${mobileMaxWidth}) {
-    padding: 15px;
+    padding: 0;
   }
 `;
 
