@@ -15,10 +15,16 @@ const app = express();
 app.use(cors());
 const router = express.Router();
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.use(
+  (
+    req: any,
+    res: { header: (arg0: string, arg1: string) => void },
+    next: () => void
+  ) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+  }
+);
 
 const parseDate = (dateString: string | undefined) => {
   if (dateString) {
@@ -60,25 +66,34 @@ const parseXml = (xml: string) => {
   });
 };
 
-router.get("/getAllFeed", async (req, res) => {
-  let result = [];
-  try {
-    for (let url of FEED_URLS) {
-      const feedItems = await fetch(url);
-      const xml = await feedItems?.text();
-      if (xml) {
-        const itemsArr = await parseXml(xml);
-        result.push(itemsArr);
-      }
+router.get(
+  "/getAllFeed",
+  async (
+    req: any,
+    res: {
+      set: (arg0: string, arg1: string) => void;
+      send: (arg0: IItem[]) => void;
     }
-    const flattenedArr = result.flat(2) as IItem[];
-    const sortedFeed = sortChronologically(flattenedArr);
-    res.set("Content-Type", "application/json");
-    res.send(sortedFeed);
-  } catch (error) {
-    console.error(error);
+  ) => {
+    let result = [];
+    try {
+      for (let url of FEED_URLS) {
+        const feedItems = await fetch(url);
+        const xml = await feedItems?.text();
+        if (xml) {
+          const itemsArr = await parseXml(xml);
+          result.push(itemsArr);
+        }
+      }
+      const flattenedArr = result.flat(2) as IItem[];
+      const sortedFeed = sortChronologically(flattenedArr);
+      res.set("Content-Type", "application/json");
+      res.send(sortedFeed);
+    } catch (error) {
+      console.error(error);
+    }
   }
-});
+);
 
 //app.options("*", () => cors());
 app.use("/.netlify/functions/server", router); // path must route to lambda
