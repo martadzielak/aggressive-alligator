@@ -1,7 +1,6 @@
-const devEnv = process.env.NODE_ENV === "development";
-export const BASE_API_URL = `${
-  devEnv ? "http://localhost:9000" : "https://aggressive-alligator.netlify.app"
-}/.netlify/functions/server/`;
+
+// Always use a relative path for Netlify Functions to avoid CORS issues
+export const BASE_API_URL = "/.netlify/functions/server/";
 
 export const colorBlack = "#000000";
 export const colorWhite = "#ffffff";

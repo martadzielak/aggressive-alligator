@@ -33,9 +33,8 @@ export const Content = () => {
 
   const getFeed = async (page: number = 1) => {
     const queryParam = page ? `p=${page}` : "";
-    const endpointUrl = new URL(`getAllFeed?${queryParam}`, BASE_API_URL);
-    console.log(endpointUrl.href);
-    const response = await fetch(endpointUrl.href);
+    const endpointUrl = `${BASE_API_URL}getAllFeed?${queryParam}`;
+    const response = await fetch(endpointUrl);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
