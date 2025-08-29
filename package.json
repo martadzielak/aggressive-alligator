@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
-  "proxy": "http://localhost:9000/",
   "dependencies": {
     "@react-rxjs/core": "^0.9.7",
     "@react-rxjs/utils": "^0.9.5",
@@ -36,11 +35,9 @@
     "xml2js": "^0.4.23"
   },
   "scripts": {
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
-    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider netlify dev",
-    "eject": "react-scripts eject"
+    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider netlify dev"
   },
   "eslintConfig": {
     "extends": [

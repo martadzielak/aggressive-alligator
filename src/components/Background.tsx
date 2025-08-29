@@ -1,7 +1,7 @@
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { Canvas, GroupProps, useFrame } from "@react-three/fiber";
 import { Suspense, useMemo, useRef, useState } from "react";
-import { colorPink, colorViolet } from "../constants";
+import { colorViolet } from "../constants";
 
 const Stars = ({ count = 5000 }) => {
   const positions = useMemo(() => {
@@ -30,7 +30,7 @@ const Stars = ({ count = 5000 }) => {
       (ref.current.rotation.x =
         ref.current.rotation.y =
         ref.current.rotation.z =
-          Math.cos(clock.getElapsedTime() / 16) * Math.PI)
+        Math.cos(clock.getElapsedTime() / 16) * Math.PI)
   );
 
   return (
@@ -93,14 +93,6 @@ export const Background = () => {
     >
       <Suspense fallback={null}>
         <Stars />
-        <group rotation={[0, 0, Math.PI / 4]}>
-          <mesh position={[0, 0, -400]} material-color={colorPink}>
-            <planeGeometry args={[150, 50]} />
-          </mesh>
-          <mesh position={[0, 0, -400]} material-color={colorPink}>
-            <planeGeometry args={[50, 150]} />
-          </mesh>
-        </group>
         <Alligator />
         <mesh position={[0, 0, -5000]} material-color={colorViolet}>
           <planeGeometry args={[15000, 15000]} />
