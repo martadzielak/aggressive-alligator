@@ -20,17 +20,12 @@ interface IApiResponse {
   pageCount: number;
   feed: IItem[];
 }
-
 export const Content = () => {
   const [items, setItems] = useState<IItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
 
-  useEffect(() => {
-    updateFeed(pageNumber);
-    window.addEventListener("scroll", handleScroll);
-  }, [pageNumber]);
-
+  // Fetch feed data for a given page
   const getFeed = async (page: number = 1) => {
     const queryParam = page ? `p=${page}` : "";
     const endpointUrl = `${BASE_API_URL}getAllFeed?${queryParam}`;
@@ -42,51 +37,69 @@ export const Content = () => {
     return data.feed;
   };
 
-  const updateFeed = async (page: number = 1) => {
-    const feed = await getFeed(page);
-    const newItems = items.concat(feed);
-    setItems(newItems);
-    if (feed.length > 0) setLoading(false);
-  };
-
-  const handleScroll = () => {
-    let userScrollHeight = window.innerHeight + window.scrollY;
-    let windowBottomHeight = document.documentElement.offsetHeight;
-    if (userScrollHeight >= windowBottomHeight) {
-      updateFeed(pageNumber + 1);
-      setPageNumber(pageNumber + 1);
+  // Load feed and update state
+  const updateFeed = async (page: number) => {
+    setLoading(true);
+    try {
+      const feed = await getFeed(page);
+      setItems(prevItems => [...prevItems, ...feed]);
+      setLoading(false);
+    } catch {
+      setLoading(false);
     }
   };
 
-  return loading ? (
-    <LoaderWithText />
-  ) : (
+  // Infinite scroll handler
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.offsetHeight - 10
+      ) {
+        setPageNumber(prev => prev + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Fetch initial feed and on pageNumber change
+  useEffect(() => {
+    updateFeed(pageNumber);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
+
+  if (loading && items.length === 0) {
+    return <LoaderWithText />;
+  }
+
+  return (
     <ContentContainer>
       <ContentList>
-        {items.map((item, i) => {
-          return (
-            <ContentItem key={`${"content_item" + i}`}>
-              <Link href={item.link}>
-                <TitleContainer>
-                  <DateAndAuthor>
-                    {item.pubDate ? `📅${formatDate(item.pubDate)} ` : null}
-                  </DateAndAuthor>
-                  <ContentTitle>
-                    {item.title ? `| ${removeCDATA(item.title)}` : null}
-                  </ContentTitle>
-                </TitleContainer>
-              </Link>
-              <Excerpt
-                dangerouslySetInnerHTML={{
-                  __html: item?.content
-                    ? removeCDATA(trimText(item.content, 1000))
-                    : "",
-                }}
-              />
-            </ContentItem>
-          );
-        })}
+        {items.map((item, i) => (
+          <ContentItem key={`content_item${i}`}>
+            <Link href={item.link}>
+              <TitleContainer>
+                <DateAndAuthor>
+                  {item.pubDate ? `📅${formatDate(item.pubDate)} ` : null}
+                </DateAndAuthor>
+                <ContentTitle>
+                  {item.title ? `| ${removeCDATA(item.title)}` : null}
+                </ContentTitle>
+              </TitleContainer>
+            </Link>
+            <Excerpt
+              dangerouslySetInnerHTML={{
+                __html: item?.content
+                  ? removeCDATA(trimText(item.content, 1000))
+                  : "",
+              }}
+            />
+          </ContentItem>
+        ))}
       </ContentList>
+      {loading && <LoaderWithText />}
     </ContentContainer>
   );
 };
